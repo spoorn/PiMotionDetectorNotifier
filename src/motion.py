@@ -54,7 +54,7 @@ def connect_email():
   log.error('Could not connect to FROM email server!  SMTP is labeled as a "Less Secure" app, so check the FROM email settings to make sure those apps are allowed access.')
 
 """ Action when motion is detected """
-def act(device):
+def act():
   log.info("motion detected...")
   global server
   message = configs.get("message").data
@@ -66,7 +66,6 @@ def act(device):
     server = connect_email()
     [server.sendmail(user, to_entry, message) for to_entry in to_list]
   log.info("sent notification [" + message + "] to " + str(to_list))
-  log.info("waiting for motion to stop...")
 
 def logdone():
   log.info("done")
@@ -96,11 +95,12 @@ if __name__ == "__main__":
   # Act on motion detection
   interval = int(configs.get("motion_detect_interval").data)
   try:
-    pir.when_motion = act
     while(1):
       log.info("idle...")
       pir.wait_for_motion()
+      act()
       time.sleep(interval)
+      log.info("waiting for motion to stop...")
       pir.wait_for_no_motion()
     log.info("exited out of program")
   except:
