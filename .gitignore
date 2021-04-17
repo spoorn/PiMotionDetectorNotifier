@@ -1,0 +1,4 @@
+myconfig*
+
+logs/*
+!logs/.gitkeep
