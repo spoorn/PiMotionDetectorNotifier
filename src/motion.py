@@ -66,6 +66,7 @@ def act(device):
     server = connect_email()
     [server.sendmail(user, to_entry, message) for to_entry in to_list]
   log.info("sent notification [" + message + "] to " + str(to_list))
+  log.info("waiting for motion to stop...")
 
 def logdone():
   log.info("done")
@@ -99,9 +100,8 @@ if __name__ == "__main__":
     while(1):
       log.info("idle...")
       pir.wait_for_motion()
-      log.info("waiting for motion to stop...")
-      pir.wait_for_no_motion()
       time.sleep(interval)
+      pir.wait_for_no_motion()
     log.info("exited out of program")
   except:
     traceback.print_exc()
