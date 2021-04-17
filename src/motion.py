@@ -99,7 +99,6 @@ if __name__ == "__main__":
     while(1):
       log.info("idle...")
       pir.wait_for_motion()
-      time.sleep(1)
       log.info("waiting for motion to stop...")
       pir.wait_for_no_motion()
       time.sleep(interval)
