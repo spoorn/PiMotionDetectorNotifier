@@ -12,6 +12,11 @@ This script currently assumes the OUT pin is connected to GPIO 23 (see https://w
 ### Prerequisites
 Depends on [gpiozero](https://pypi.org/project/jproperties/) and [jproperties](https://pypi.org/project/jproperties/).  Both can be installed via `pip install gpiozero` and `pip install jproperties`
 
+### Installation
+Clone repository: `git clone https://github.com/spoorn/PiMotionDetectorNotifier.git`\
+Or\
+Download and extract zip under Releases: https://github.com/spoorn/PiMotionDetectorNotifier/releases
+
 ### Configuration
 This script uses an email to send messages/text other emails/phone numbers.  You will need to provide an email for the FROM user (Gmail has been tested and works).  Recommend to use a non-important email as credentials will be stored in a configuration file.  The FROM email is logged in via SMTP, so depending on the email server, you may need to allow access from "Less Secure Apps" (see https://support.google.com/accounts/answer/6010255 if you are using Gmail).
 
